@@ -6,7 +6,7 @@ polyfitbayes <- function(indnr, xv, yv, ch, sel, zv, vv)
   if (indnr == 2)
   {
     # Max number of iterations 
-    maxiter = 2000000; 
+    maxiter = 200000; 
     
     # computing the inverse of x and y
     invx <- xv^(-1)
@@ -19,25 +19,36 @@ polyfitbayes <- function(indnr, xv, yv, ch, sel, zv, vv)
     invy[idx2] <- NA
     
     # defining in- and output for the regression, computing the Ordinary Least Square Regression
-    input <- cbind(rep(1, length(xv)), invx, invy, xv, yv, invx*invy, invx*yv, invy*xv,
+    input <- cbind(rep(1, length(xv)), invx, invy, xv, yv, invx*invy, xv*invy, yv*invx,
                    xv*yv, xv^2, invx^2, yv^2, invy^2, xv^3, yv^3, invx^3, invy^3)
     inputs <- input[, sel]
     output <- ch
     
     # Monte Carlo Simulation, integration 
     paramspc <- seq(-0.1, 0.1, 0.001)
-    randobsnum <- pmin(maxiter, (200^length(sel))) 
+    randobsnum <- min(maxiter, (200^length(sel))) 
     indexchoose <- matrix(runif(randobsnum*length(sel)), randobsnum, length(sel))
     Cparam <- -0.1 + 200*0.001*indexchoose
     
     # computing log BayesFactor
     Plikeli <- c()
     logBF <- c()
-    for (tt in 1:nrow(Cparam))
+    if (length(sel)==1)
     {
-      Plikeli[tt] <- exp(sum(-(output - inputs*t(Cparam[tt,])^2/2/var(output))))
-      logBF[tt] <- sum(-(output - inputs*t(Cparam[tt,]))^2/(2*var(output))) 
-    }
+      for (tt in 1:nrow(Cparam))
+      { 
+        Plikeli[tt] <- exp(sum(-(output - inputs*(Cparam[tt,])^2/2/var(output))))
+        logBF[tt] <- sum(-(output - inputs*(Cparam[tt,]))^2/(2*var(output))) 
+      }
+    } 
+    if (length(sel)>1)
+    {
+      for (tt in 1:nrow(Cparam))
+      {
+        Plikeli[tt] <- exp(sum(-(output - inputs%*%(Cparam[tt,])^2/2/var(output))))
+        logBF[tt] <- sum(-(output - inputs%*%(Cparam[tt,]))^2/(2*var(output))) 
+      }
+    }  
     
     # selecting best model based on BayesFactor
     bestm <- max(logBF)
@@ -53,7 +64,7 @@ polyfitbayes <- function(indnr, xv, yv, ch, sel, zv, vv)
   if (indnr == 3)
   {
     # Max number of iterations 
-    maxiter = 1000000; 
+    maxiter = 200000; 
     
     # computing the inverse of x and y
     invx <- xv^(-1)
@@ -78,18 +89,29 @@ polyfitbayes <- function(indnr, xv, yv, ch, sel, zv, vv)
     
     # Monte Carlo Simulation, integration 
     paramspc <- seq(-0.1, 0.1, 0.001)
-    randobsnum <- pmin(maxiter, (200^length(sel))) 
+    randobsnum <- min(maxiter, (200^length(sel))) 
     indexchoose <- matrix(runif(randobsnum*length(sel)), randobsnum, length(sel))
     Cparam <- -0.1 + 200*0.001*indexchoose
     
     # computing log BayesFactor
     Plikeli <- c()
     logBF <- c()
-    for (tt in 1:nrow(Cparam))
+    if (length(sel)==1)
     {
-      Plikeli[tt] <- exp(sum(-(output - inputs*t(Cparam[tt,])^2/2/var(output))))
-      logBF[tt] <- sum(-(output - inputs*t(Cparam[tt,]))^2/(2*var(output))) 
-    }
+      for (tt in 1:nrow(Cparam))
+      {
+        Plikeli[tt] <- exp(sum(-(output - inputs*(Cparam[tt,])^2/2/var(output))))
+        logBF[tt] <- sum(-(output - inputs*(Cparam[tt,]))^2/(2*var(output))) 
+      }
+    } 
+    if (length(sel)>1)
+    {
+      for (tt in 1:nrow(Cparam))
+      {
+        Plikeli[tt] <- exp(sum(-(output - inputs%*%(Cparam[tt,])^2/2/var(output))))
+        logBF[tt] <- sum(-(output - inputs%*%(Cparam[tt,]))^2/(2*var(output))) 
+      }
+    } 
     
     # selecting best model based on BayesFactor
     bestm <- max(logBF)
@@ -141,18 +163,29 @@ polyfitbayes <- function(indnr, xv, yv, ch, sel, zv, vv)
     
     # Monte Carlo Simulation, integration 
     paramspc <- seq(-0.1, 0.1, 0.001)
-    randobsnum <- pmin(maxiter, (200^length(sel))) 
+    randobsnum <- min(maxiter, (200^length(sel))) 
     indexchoose <- matrix(runif(randobsnum*length(sel)), randobsnum, length(sel))
     Cparam <- -0.1 + 200*0.001*indexchoose
     
     # computing log BayesFactor
     Plikeli <- c()
     logBF <- c()
-    for (tt in 1:nrow(Cparam))
+    if (length(sel)==1)
     {
-      Plikeli[tt] <- exp(sum(-(output - inputs*t(Cparam[tt,])^2/2/var(output))))
-      logBF[tt] <- sum(-(output - inputs*t(Cparam[tt,]))^2/(2*var(output))) 
-    }
+      for (tt in 1:nrow(Cparam))
+      { 
+        Plikeli[tt] <- exp(sum(-(output - inputs*(Cparam[tt,])^2/2/var(output))))
+        logBF[tt] <- sum(-(output - inputs*(Cparam[tt,]))^2/(2*var(output))) 
+      }
+    } 
+    if (length(sel)>1)
+    {
+      for (tt in 1:nrow(Cparam))
+      {
+        Plikeli[tt] <- exp(sum(-(output - inputs%*%(Cparam[tt,])^2/2/var(output))))
+        logBF[tt] <- sum(-(output - inputs%*%(Cparam[tt,]))^2/(2*var(output))) 
+      }
+    } 
     
     # selecting best model based on BayesFactor
     bestm <- max(logBF)

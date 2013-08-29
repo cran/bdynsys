@@ -1,9 +1,8 @@
-\name{PlotDataInPhasePlane}
+\name{plot_data}
 
 %\docType{methods}
 
 \alias{plot_data}
-\alias{plot}
 
 \title{Plotting Data in Phase Plane with Data Trajectories for Specified Entities}
 

@@ -1,4 +1,4 @@
-\name{BayesFactorsPlot}
+\name{bayfacfig}
 
 \alias{bayfacfig}
 

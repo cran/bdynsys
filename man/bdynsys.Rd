@@ -1,20 +1,14 @@
-\name{BayesianDynamicSystemModeling}
+\name{bdynsys}
 
 \docType{package}
 
 \alias{bdynsys}
-\alias{panel}
-\alias{longitudinal}
-\alias{bayesian}
-\alias{dynamicSystems}
-\alias{complex}
-\alias{nonlinear}
 
 \title{Bayesian Dynamic System Modeling}
 
 \description{
 \code{bdynsys} is a package for panel/longitudinal data that combines methods to model 
-changes in up to four indicators over times as a function of the indicators itself and up to three predictors using ordinary differential equations (ODEs) with polynomial terms that allow to model complex and nonlinear effects. A Bayesian model selection approach is implemented. The package provides also visualisation tools to plot phase portraits of the dynamic system, showing the complex co-evolution of two indicators over time with the possibility to highlight trajectories for specified entities (e.g. countries, individuals). \code{bdynsys} is also the
+changes in up to four indicators over time as a function of the indicators itself and up to four predictors using ordinary differential equations (ODEs) with polynomial terms that allow to model complex and nonlinear effects. A Bayesian model selection approach is implemented. The package provides also visualisation tools to plot phase portraits of the dynamic system, showing the complex co-evolution of two indicators over time with the possibility to highlight trajectories for specified entities (e.g. countries, individuals). \code{bdynsys} is also the
 name of the main function in the \code{bdynsys} package, that performs the bayesian dynamic
 systems modeling.}
 
@@ -64,7 +58,7 @@ systems modeling.}
 ## Bayesian Dynamic System Modeling with two variables and three modelparameters
 ## dx  = + 0.0012 /x^2 and dy = + 0.0071 x^3
 
-bdynsys(datap, 2, 3, datap$logGDP, datap$EmanzV)
+bdynsys(datap, 2, 1, datap$logGDP, datap$EmanzV)
 }
 
 \keyword{stats}

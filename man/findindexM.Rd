@@ -1,8 +1,8 @@
-\name{FinindexOfModelterms(InternalMethod)}
+\name{findindexM}
 
 \alias{findindexM}
 
-\title{Finding Indexes of Polynomial Modelterms}
+\title{Finding Indexes of Polynomial Modelterms (Internal Function)}
 
 \description{
 \code{findindexM} finds indexs of modelterms to be processed in selectterms if the user wishes to compare Bayes factors of models with two vs. model with three indicators or models with three vs. models with four indicators. The function is internally called in the code \code{bdynsys}{bayesfac}{selectterms}. It returns internally the indexes of modelterms to \code{bdynsys}{bayesfac}{selectterms}.}

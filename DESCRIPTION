@@ -1,8 +1,8 @@
 Package: bdynsys
 Type: Package
 Title: Bayesian Dynamical System Model
-Version: 1.0
-Date: 2013-07-29
+Version: 1.1
+Date: 2013-08-29
 Author: Shyam Ranganathan, Viktoria Spaiser, Richard P. Mann, David J.T. Sumpter
 Maintainer: Viktoria Spaiser <viktoria.spaiser@iffs.se>
 Depends: R (>= 2.10), stats, graphics, grDevices
@@ -21,7 +21,7 @@ Description: The package bdynsys for panel/longitudinal data combines methods to
              predictions of the trajectories of specified entities with respect to the 
              indicators.   
 License: GNU General Public License (>= 2)
-Packaged: 2013-07-30 08:12:10 UTC; viktoriasp
 NeedsCompilation: no
+Packaged: 2013-08-29 21:47:54 UTC; viktoriasp
 Repository: CRAN
-Date/Publication: 2013-07-30 11:50:18
+Date/Publication: 2013-08-30 01:25:02

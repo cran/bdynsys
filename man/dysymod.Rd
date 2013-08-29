@@ -1,8 +1,8 @@
-\name{DynamicSystemModeling(InternalMethod)}
+\name{dysymod}
 
 \alias{dysymod}
 
-\title{Modeling Dynamic Complex Systems with Ordinary Differential Equations}
+\title{Modeling Dynamic Complex Systems with Ordinary Differential Equations (Internal Function)}
 
 \description{
 \code{dysymod} is the core code of the dynamic system modeling in the bdynsys package. It is internally called in the main code \code{bdynsys}. It calls the functions \code{polyfitreg} and \code{bestfitmod}. It defines the polynomial terms, that are used to build the models and creates all possible model combinations and fits them. The best three models for each number of modelparameters are then selected. It prints the three selected models for each number of modelparameters and their Log Likelihood and R-squares. It requires the package \code{caTools}.}

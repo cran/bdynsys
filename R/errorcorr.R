@@ -6,19 +6,19 @@
 # deviate from the originally estimated and may decide to use the corrected 
 # coefficiets in his/her result reports
 
-# to call: errorcorr(pdata, 2, datap$logGDP, datap$EmanzV, f <- function(Y=c()) rbind(0.0012/Y[1]^2, + 0.0071*Y[1]^3), c(11), c(14))
+# to call: errorcorr(pdata, 2, datap$logGDP, datap$EmanzV, f <- function(Y=c()) rbind(0.0012/Y[1]^2, + 0.0071*Y[1]^3), c(11), c(14), 2)
 # with dx  = + 0.0012 /x^2 and dy = + 0.0071 x^3 
-# call for indnr = 3: errorcorr(pdata, 3, datap$logGDP, datap$EmanzV, f <- function(Y=c()) rbind(0.0012/Y[1]^2, + 0.0071*Y[1]^3, 0.0025*Y[1]^2), c(29), c(34), datap$DemocrH, c(28))
-# call for indnr = 4: errorcorr(pdata, 4, datap$logGDP, datap$EmanzV, f <- function(Y=c()) rbind(0.0012/Y[1]^2, + 0.0071*Y[1]^3, 0.0025*Y[1]^2, + 0.123 + 0.076/Y[4]), c(83), c(90), datap$DemocrH, c(82), datap$SeculTradV, c(1, 5)) 
-errorcorr <- function(dataset, indnr, x, y, f, xterms, yterms, z, zterms, v, vterms)
+# call for indnr = 3: errorcorr(pdata, 3, datap$logGDP, datap$EmanzV, f <- function(Y=c()) rbind(0.0012/Y[1]^2, + 0.0071*Y[1]^3, 0.0025*Y[1]^2), c(29), c(34), 3, datap$DemocrH, c(28))
+# call for indnr = 4: errorcorr(pdata, 4, datap$logGDP, datap$EmanzV, f <- function(Y=c()) rbind(0.0012/Y[1]^2, + 0.0071*Y[1]^3, 0.0025*Y[1]^2, + 0.123 + 0.076/Y[4]), c(83), c(90), 5, datap$DemocrH, c(82), datap$SeculTradV, c(1, 5)) 
+errorcorr <- function(dataset, indnr, x, y, f, xterms, yterms, nrterms, z, zterms, v, vterms)
 {
   if (indnr == 2)
   {
     procdata <- preprocess_data(indnr, x, y)
-    xv <- procdata$xs
-    yv <- procdata$ys
-    chx <- procdata$chXs
-    chy <- procdata$chYs
+    xv <- procdata$allX
+    yv <- procdata$allY
+    chx <- procdata$tiChX
+    chy <- procdata$tiChY
     
     # Specify the models    
     for (i in 1:length(xv))
@@ -56,7 +56,7 @@ errorcorr <- function(dataset, indnr, x, y, f, xterms, yterms, z, zterms, v, vte
     invx[idx1] <- NA
     invy[idx2] <- NA
     
-    input <- cbind(rep(1, length(xv)), invx, invy, xv, yv, invx*invy, invx*yv, invy*xv,
+    input <- cbind(rep(1, length(xv)), invx, invy, xv, yv, invx*invy, xv*invy, yv*invx,
                     xv*yv, xv^2, invx^2, yv^2, invy^2, xv^3, yv^3, invx^3, invy^3)
     Xterms <- input
     Yterms <- input
@@ -70,15 +70,15 @@ errorcorr <- function(dataset, indnr, x, y, f, xterms, yterms, z, zterms, v, vte
   
     # Reestimating the Beta coefficients
     xtkron <- matrix(c(covmat[1, 1]*t(Xterms), covmat[1, 2]*t(Xterms), 
-                       covmat[2, 1]*t(Yterms), covmat[2, 2]*t(Yterms)), nrow=4, ncol=length(Xterms)*2, 
-                       byrow=TRUE)
+                       covmat[2, 1]*t(Yterms), covmat[2, 2]*t(Yterms)), nrow=nrterms, byrow=TRUE)
 
     xtkronx <- matrix(c(covmat[1, 1]*t(Xterms)%*%Xterms, covmat[1, 2]*t(Xterms)%*%Yterms, 
                         covmat[2, 1]*t(Yterms)%*%Xterms, covmat[2, 2]*t(Yterms)%*%Yterms), 
-                        nrow=4, ncol=4, byrow=TRUE)
+                        nrow=nrterms, ncol=nrterms, byrow=TRUE)
     
     betapred <- ginv(xtkronx)%*%xtkron%*%allincmatr 
-    save(betapred, file = "Betapred.Rdata")
+    print(betapred)
+    #save(betapred, file = "Betapred.Rdata")
   }
   
   ########################## for indnr = 3 ####################################################################
@@ -86,12 +86,12 @@ errorcorr <- function(dataset, indnr, x, y, f, xterms, yterms, z, zterms, v, vte
   if (indnr == 3)
   {
     procdata <- preprocess_data(indnr, x, y, z)
-    xv <- procdata$xs
-    yv <- procdata$ys
-    zv <- procdata$zs
-    chx <- procdata$chXs
-    chy <- procdata$chYs
-    chz <- procdata$chZs
+    xv <- procdata$allX
+    yv <- procdata$allY
+    zv <- procdata$allZ
+    chx <- procdata$tiChX
+    chy <- procdata$tiChY
+    chz <- procdata$tiChZ
     
     # Specify the models    
     for (i in 1:length(xv))
@@ -160,15 +160,16 @@ errorcorr <- function(dataset, indnr, x, y, f, xterms, yterms, z, zterms, v, vte
                       covmat[1, 3]*t(Xterms), covmat[2, 1]*t(Yterms), 
                       covmat[2, 2]*t(Yterms), covmat[2, 3]*t(Yterms),
                       covmat[3, 1]*t(Zterms), covmat[3, 2]*t(Zterms),
-                      covmat[3, 3]*t(Zterms)), nrow=9, ncol=length(Xterms)*3, byrow=TRUE)
+                      covmat[3, 3]*t(Zterms)), nrow=nrterms, byrow=TRUE)
     xtkronx <- matrix(c(covmat[1, 1]*t(Xterms)%*%Xterms, covmat[1, 2]*t(Xterms)%*%Yterms, 
                        covmat[1, 3]*t(Xterms)%*%Zterms, covmat[2, 1]*t(Yterms)%*%Xterms, 
                        covmat[2, 2]*t(Yterms)%*%Yterms, covmat[2, 3]*t(Yterms)%*%Zterms,
                        covmat[3, 1]*t(Zterms)%*%Xterms, covmat[3, 2]*t(Zterms)%*%Yterms,
-                       covmat[3, 3]*t(Zterms)%*%Zterms), nrow=9, ncol=9, byrow=TRUE)
+                       covmat[3, 3]*t(Zterms)%*%Zterms), nrow=nrterms, ncol=nrterms, byrow=TRUE)
 
-    betapred <- ginv(xtkronx)%*%xtkron%*%allincmatr 
-    save(betapred, file = "Betapred.Rdata")   
+    betapred <- ginv(xtkronx)%*%xtkron%*%allincmatr
+    print(betapred)
+    #save(betapred, file = "Betapred.Rdata")   
   }
 
 ####################################### for indnr = 4 #####################################  
@@ -176,14 +177,14 @@ errorcorr <- function(dataset, indnr, x, y, f, xterms, yterms, z, zterms, v, vte
   if (indnr == 4)
   {
     procdata <- preprocess_data(indnr, x, y, z, v)
-    xv <- procdata$xs
-    yv <- procdata$ys
-    zv <- procdata$zs
-    vv <- procdata$vs
-    chx <- procdata$chXs
-    chy <- procdata$chYs
-    chz <- procdata$chZs
-    chv <- procdata$chVs
+    xv <- procdata$allX
+    yv <- procdata$allY
+    zv <- procdata$allZ
+    vv <- procdata$allV
+    chx <- procdata$tiChX
+    chy <- procdata$tiChY
+    chz <- procdata$tiChZ
+    chv <- procdata$tiChV
     
     # Specify the models    
     for (i in 1:length(xv))
@@ -277,7 +278,7 @@ errorcorr <- function(dataset, indnr, x, y, f, xterms, yterms, z, zterms, v, vte
                       covmat[3, 3]*t(Zterms), covmat[3, 4]*t(Zterms),
                       covmat[4, 1]*t(Vterms), covmat[4, 2]*t(Vterms),
                       covmat[4, 3]*t(Vterms), covmat[4, 4]*t(Vterms)),
-                     nrow=16, ncol=length(Xterms)*4, byrow=TRUE)
+                     nrow=nrterms, byrow=TRUE)
     xtkronx <- matrix(c(covmat[1, 1]*t(Xterms)%*%Xterms, covmat[1, 2]*t(Xterms)%*%Yterms, 
                        covmat[1, 3]*t(Xterms)%*%Zterms, covmat[1, 4]*t(Xterms)%*%Vterms,
                        covmat[2, 1]*t(Yterms)%*%Xterms, covmat[2, 2]*t(Yterms)%*%Yterms, 
@@ -286,10 +287,11 @@ errorcorr <- function(dataset, indnr, x, y, f, xterms, yterms, z, zterms, v, vte
                        covmat[3, 3]*t(Zterms)%*%Zterms, covmat[3, 4]*t(Zterms)%*%Vterms,
                        covmat[4, 1]*t(Vterms)%*%Xterms, covmat[4, 2]*t(Vterms)%*%Yterms,
                        covmat[4, 3]*t(Vterms)%*%Zterms, covmat[4, 4]*t(Vterms)%*%Vterms),
-                     nrow=16, ncol=16, byrow=TRUE)
+                     nrow=nrterms, ncol=nrterms, byrow=TRUE)
     
     betapred <- ginv(xtkronx)%*%xtkron%*%allincmatr 
-    save(betapred, file = "Betapred.Rdata")    
+    print(betapred)
+    #save(betapred, file = "Betapred.Rdata")    
   }
 }
   

@@ -1,4 +1,4 @@
-\name{PhasePortraitDataTrajectories}
+\name{phaseportdat}
 
 %\docType{methods}
 

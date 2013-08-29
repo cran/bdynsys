@@ -40,7 +40,7 @@ bayesfac <- function(indnr, paramnr, SEx, SEy, xv, yv, chx, chy, zv, chz, SEz, v
     count = 1   
     for (j in 1:nmodelterms)
     {
-      tmp = polyfitbayes(indnr, xv, yv, chx, M1[count:count+j-1]) 
+      tmp = polyfitbayes(indnr, xv, yv, chx, M1[count:(count+j-1)]) 
       bestm <- tmp[[1]]
       indexbestm <- tmp[[2]]
       
@@ -53,7 +53,7 @@ bayesfac <- function(indnr, paramnr, SEx, SEy, xv, yv, chx, chy, zv, chz, SEz, v
     count = 1    
     for (j in 1:nmodelterms)
     {
-      tmp = polyfitbayes(indnr, xv, yv, chy, M2[count:count+j-1])
+      tmp = polyfitbayes(indnr, xv, yv, chy, M2[count:(count+j-1)])
       bestm <- tmp[[1]]
       indexbestm <- tmp[[2]]
           
@@ -147,7 +147,7 @@ bayesfac <- function(indnr, paramnr, SEx, SEy, xv, yv, chx, chy, zv, chz, SEz, v
     count = 1   
     for (j in 1:nmodelterms)
     {
-      tmp = polyfitbayes(indnr, xv, yv, chx, M1[count:count+j-1], zv)
+      tmp = polyfitbayes(indnr, xv, yv, chx, M1[count:(count+j-1)], zv)
       bestm <- tmp[[1]]
       indexbestm <- tmp[[2]]
       
@@ -164,7 +164,7 @@ bayesfac <- function(indnr, paramnr, SEx, SEy, xv, yv, chx, chy, zv, chz, SEz, v
 #     count = 1    
 #     for (j in 1:nmodelterms)
 #     {
-#       tmp = polyfitbayes(indnr, xv, yv, chx, M1a[count: count+j-1], zv)
+#       tmp = polyfitbayes(indnr, xv, yv, chx, M1a[count: (count+j-1)], zv)
 #       bestm <- [[1]]
 #       indexbestm <- [[2]]
 #       Bf1a[j] <- bestm
@@ -178,7 +178,7 @@ bayesfac <- function(indnr, paramnr, SEx, SEy, xv, yv, chx, chy, zv, chz, SEz, v
 #     count = 1   
 #     for (j in 1:nmodelterms)
 #     {
-#       tmp = polyfitbayes(indnr, xv, yv, chx, M1b[count: count+j-1], zv)
+#       tmp = polyfitbayes(indnr, xv, yv, chx, M1b[count: (count+j-1)], zv)
 #       bestm <- [[1]]
 #       indexbestm <- [[2]]
 #       Bf1b[j] <- bestm
@@ -190,7 +190,7 @@ bayesfac <- function(indnr, paramnr, SEx, SEy, xv, yv, chx, chy, zv, chz, SEz, v
     count = 1    
     for (j in 1:nmodelterms)
     {
-      tmp = polyfitbayes(indnr, xv, yv, chy, M2[count:count+j-1], zv)
+      tmp = polyfitbayes(indnr, xv, yv, chy, M2[count:(count+j-1)], zv)
       bestm <- tmp[[1]]
       indexbestm <- tmp[[2]] 
       
@@ -207,7 +207,7 @@ bayesfac <- function(indnr, paramnr, SEx, SEy, xv, yv, chx, chy, zv, chz, SEz, v
 #     count = 1    
 #     for (j in 1:nmodelterms)
 #     {
-#       tmp = polyfitbayes(indnr, yv, xv, chy, M2a[count: count+j-1], zv)
+#       tmp = polyfitbayes(indnr, yv, xv, chy, M2a[count: (count+j-1)], zv)
 #       bestm <- [[1]]
 #       indexbestm <- [[2]] 
 #       Bf2a[j] <- bestm
@@ -221,7 +221,7 @@ bayesfac <- function(indnr, paramnr, SEx, SEy, xv, yv, chx, chy, zv, chz, SEz, v
 #     count = 1    
 #     for (j in 1:nmodelterms)
 #     {
-#       tmp = polyfitbayes(indnr, xv, yv, chy, M2b[count: count+j-1], zv)
+#       tmp = polyfitbayes(indnr, xv, yv, chy, M2b[count: (count+j-1)], zv)
 #       bestm <- [[1]]
 #       indexbestm <- [[2]] 
 #       Bf2b[j] <- bestm
@@ -233,7 +233,7 @@ bayesfac <- function(indnr, paramnr, SEx, SEy, xv, yv, chx, chy, zv, chz, SEz, v
     count = 1   
     for (j in 1:nmodelterms)
     {
-      tmp = polyfitbayes(indnr, xv, yv, chz, M3[count:count+j-1], zv)
+      tmp = polyfitbayes(indnr, xv, yv, chz, M3[count:(count+j-1)], zv)
       bestm <- tmp[[1]]
       indexbestm <- tmp[[2]]
       
@@ -250,7 +250,7 @@ bayesfac <- function(indnr, paramnr, SEx, SEy, xv, yv, chx, chy, zv, chz, SEz, v
 #     count = 1   
 #     for (j in 1:nmodelterms)
 #     {
-#       tmp = polyfitbayes(indnr, xv, yv, chz, M3a[count: count+j-1], zv)
+#       tmp = polyfitbayes(indnr, xv, yv, chz, M3a[count: (count+j-1)], zv)
 #       bestm <- [[1]]
 #       indexbestm <- [[2]]
 #       Bf3a[j] <- bestm
@@ -264,7 +264,7 @@ bayesfac <- function(indnr, paramnr, SEx, SEy, xv, yv, chx, chy, zv, chz, SEz, v
 #     count = 1  
 #     for (j in 1:nmodelterms)
 #     {
-#       tmp = polyfitbayes(indnr, xv, yv, chz, M3b[count: count+j-1], zv)
+#       tmp = polyfitbayes(indnr, xv, yv, chz, M3b[count: (count+j-1)], zv)
 #       bestm <- [[1]]
 #       indexbestm <- [[2]]
 #       Bf3b[j] <- bestm
@@ -440,7 +440,7 @@ bayesfac <- function(indnr, paramnr, SEx, SEy, xv, yv, chx, chy, zv, chz, SEz, v
     count = 1    
     for (j in 1:nmodelterms)
     {
-      tmp = polyfitbayes(indnr, xv, yv, chx, M1[count:count+j-1], zv, vv)
+      tmp = polyfitbayes(indnr, xv, yv, chx, M1[count:(count+j-1)], zv, vv)
       bestm <- tmp[[1]]
       indexbestm <- tmp[[2]]
       
@@ -457,7 +457,7 @@ bayesfac <- function(indnr, paramnr, SEx, SEy, xv, yv, chx, chy, zv, chz, SEz, v
 #     count = 1  
 #     for (j in 1:nmodelterms)
 #     {
-#       tmp = polyfitbayes(indnr, xv, yv, chx, M1a[count:count+j-1], zv, vv)
+#       tmp = polyfitbayes(indnr, xv, yv, chx, M1a[count:(count+j-1)], zv, vv)
 #       bestm <- [[1]]
 #       indexbestm <- [[2]]
     
@@ -472,7 +472,7 @@ bayesfac <- function(indnr, paramnr, SEx, SEy, xv, yv, chx, chy, zv, chz, SEz, v
 #     count = 1   
 #     for (j in 1:nmodelterms)
 #     {
-#       tmp = polyfitbayes(indnr, xv, yv, chx, M1b[count:count+j-1], zv, vv)
+#       tmp = polyfitbayes(indnr, xv, yv, chx, M1b[count:(count+j-1)], zv, vv)
 #       bestm <- [[1]]
 #       indexbestm <- [[2]]   
 #       Bf1b[j] <- bestm
@@ -486,7 +486,7 @@ bayesfac <- function(indnr, paramnr, SEx, SEy, xv, yv, chx, chy, zv, chz, SEz, v
 #     count = 1   
 #     for (j in 1:nmodelterms)
 #     {
-#       tmp = polyfitbayes(indnr, xv, yv, chx, M1c[count:count+j-1], zv, vv)
+#       tmp = polyfitbayes(indnr, xv, yv, chx, M1c[count:(count+j-1)], zv, vv)
 #       bestm <- [[1]]
 #       indexbestm <- [[2]] 
 #       Bf1c[j] <- bestm
@@ -500,7 +500,7 @@ bayesfac <- function(indnr, paramnr, SEx, SEy, xv, yv, chx, chy, zv, chz, SEz, v
 #     count = 1   
 #     for (j in 1:nmodelterms)
 #     {
-#       tmp = polyfitbayes(indnr, xv, yv, chx, M1d[count: count+j-1], zv, vv)
+#       tmp = polyfitbayes(indnr, xv, yv, chx, M1d[count:(count+j-1)], zv, vv)
 #       bestm <- [[1]]
 #       indexbestm <- [[2]] 
 #       Bf1d[j] <- bestm
@@ -515,7 +515,7 @@ bayesfac <- function(indnr, paramnr, SEx, SEy, xv, yv, chx, chy, zv, chz, SEz, v
 #     
 #     for (j in 1:nmodelterms)
 #     {
-#       tmp = polyfitbayes(indnr, xv, yv, chx, M1e[count:count+j-1], zv, vv)
+#       tmp = polyfitbayes(indnr, xv, yv, chx, M1e[count:(count+j-1)], zv, vv)
 #       bestm <- [[1]]
 #       indexbestm <- [[2]] 
 #       Bf1e[j] <- bestm
@@ -529,7 +529,7 @@ bayesfac <- function(indnr, paramnr, SEx, SEy, xv, yv, chx, chy, zv, chz, SEz, v
 #     count = 1 
 #     for (j in 1:nmodelterms)
 #     {
-#       tmp = polyfitbayes(indnr, xv, yv, chx, M1f[count: count+j-1], zv, vv)
+#       tmp = polyfitbayes(indnr, xv, yv, chx, M1f[count: (count+j-1)], zv, vv)
 #       bestm <- [[1]]
 #       indexbestm <- [[2]] 
 #       Bf1f[j] <- bestm
@@ -541,7 +541,7 @@ bayesfac <- function(indnr, paramnr, SEx, SEy, xv, yv, chx, chy, zv, chz, SEz, v
     count = 1   
     for (j in 1:nmodelterms)
     {
-      tmp = polyfitbayes(indnr, xv, yv, chy, M2[count:count+j-1], zv, vv)
+      tmp = polyfitbayes(indnr, xv, yv, chy, M2[count:(count+j-1)], zv, vv)
       bestm <- tmp[[1]]
       indexbestm <- tmp[[2]] 
       
@@ -558,7 +558,7 @@ bayesfac <- function(indnr, paramnr, SEx, SEy, xv, yv, chx, chy, zv, chz, SEz, v
 #     count = 1 
 #     for (j in 1:nmodelterms)
 #     {
-#       tmp = polyfitbayes(indnr, xv, yv, chy, M2a[count:count+j-1], zv, vv)
+#       tmp = polyfitbayes(indnr, xv, yv, chy, M2a[count:(count+j-1)], zv, vv)
 #       bestm <- [[1]]
 #       indexbestm <- [[2]] 
 #       Bf2a[j] <- bestm
@@ -572,7 +572,7 @@ bayesfac <- function(indnr, paramnr, SEx, SEy, xv, yv, chx, chy, zv, chz, SEz, v
 #     count = 1   
 #     for (j in 1:nmodelterms)
 #     {
-#       tmp = polyfitbayes(indnr, xv, yv, chy, M2b[count:count+j-1], zv, vv)
+#       tmp = polyfitbayes(indnr, xv, yv, chy, M2b[count:(count+j-1)], zv, vv)
 #       bestm <- [[1]]
 #       indexbestm <- [[2]] 
 #       Bf2b[j] <- bestm
@@ -586,7 +586,7 @@ bayesfac <- function(indnr, paramnr, SEx, SEy, xv, yv, chx, chy, zv, chz, SEz, v
 #     count = 1   
 #     for (j in 1:nmodelterms)
 #     {
-#       tmp = polyfitbayes(indnr, xv, yv, chy, M2c[count:count+j-1], zv, vv)
+#       tmp = polyfitbayes(indnr, xv, yv, chy, M2c[count:(count+j-1)], zv, vv)
 #       bestm <- [[1]]
 #       indexbestm <- [[2]]
 #       Bf2c[j] <- bestm
@@ -600,7 +600,7 @@ bayesfac <- function(indnr, paramnr, SEx, SEy, xv, yv, chx, chy, zv, chz, SEz, v
 #     count = 1  
 #     for (j in 1:nmodelterms)
 #     {
-#       tmp = polyfitbayes(indnr, xv, yv, chy, M2d[count:count+j-1], zv, vv)
+#       tmp = polyfitbayes(indnr, xv, yv, chy, M2d[count:(count+j-1)], zv, vv)
 #       bestm <- [[1]]
 #       indexbestm <- [[2]]
 #       Bf2d[j] <- bestm
@@ -614,7 +614,7 @@ bayesfac <- function(indnr, paramnr, SEx, SEy, xv, yv, chx, chy, zv, chz, SEz, v
 #     count = 1
 #     for (j in 1:nmodelterms)
 #     {
-#       tmp = polyfitbayes(indnr, xv, yv, chy, M2e[count:count+j-1], zv, vv)
+#       tmp = polyfitbayes(indnr, xv, yv, chy, M2e[count:(count+j-1)], zv, vv)
 #       bestm <- [[1]]
 #       indexbestm <- [[2]]
 #       Bf2e[j] <- bestm
@@ -628,7 +628,7 @@ bayesfac <- function(indnr, paramnr, SEx, SEy, xv, yv, chx, chy, zv, chz, SEz, v
 #     count = 1   
 #     for (j in 1:nmodelterms)
 #     {
-#       tmp = polyfitbayes(indnr, xv, yv, chy, M2f[count: count+j-1], zv, vv)
+#       tmp = polyfitbayes(indnr, xv, yv, chy, M2f[count:(count+j-1)], zv, vv)
 #       bestm <- [[1]]
 #       indexbestm <- [[2]]
 #       Bf2f[j] <- bestm
@@ -640,7 +640,7 @@ bayesfac <- function(indnr, paramnr, SEx, SEy, xv, yv, chx, chy, zv, chz, SEz, v
     count = 1    
     for (j in 1:nmodelterms)
     {
-      tmp = polyfitbayes(indnr, xv, yv, chz, M3[count:count+j-1], zv, vv)
+      tmp = polyfitbayes(indnr, xv, yv, chz, M3[count:(count+j-1)], zv, vv)
       bestm <- tmp[[1]]
       indexbestm <- tmp[[2]]
       
@@ -657,7 +657,7 @@ bayesfac <- function(indnr, paramnr, SEx, SEy, xv, yv, chx, chy, zv, chz, SEz, v
 #     count = 1 
 #     for (j in 1:nmodelterms)
 #     {
-#       tmp = polyfitbayes(indnr, xv, yv, chz, M3a[count:count+j-1], zv, vv)
+#       tmp = polyfitbayes(indnr, xv, yv, chz, M3a[count:(count+j-1)], zv, vv)
 #       bestm <- [[1]]
 #       indexbestm <- [[2]]
 #       Bf3a[j] <- bestm
@@ -671,7 +671,7 @@ bayesfac <- function(indnr, paramnr, SEx, SEy, xv, yv, chx, chy, zv, chz, SEz, v
 #     count = 1   
 #     for (j in 1:nmodelterms)
 #     {
-#       tmp = polyfitbayes(indnr, xv, yv, chz, M3b[count:count+j-1], zv, vv)
+#       tmp = polyfitbayes(indnr, xv, yv, chz, M3b[count:(count+j-1)], zv, vv)
 #       bestm <- [[1]]
 #       indexbestm <- [[2]]
 #       Bf3b[j] <- bestm
@@ -685,7 +685,7 @@ bayesfac <- function(indnr, paramnr, SEx, SEy, xv, yv, chx, chy, zv, chz, SEz, v
 #     count = 1   
 #     for (j in 1:nmodelterms)
 #     {
-#       tmp = polyfitbayes(indnr, xv, yv, chz, M3c[count:count+j-1], zv, vv)
+#       tmp = polyfitbayes(indnr, xv, yv, chz, M3c[count:(count+j-1)], zv, vv)
 #       bestm <- [[1]]
 #       indexbestm <- [[2]]
 #       Bf3c[j] <- bestm
@@ -699,7 +699,7 @@ bayesfac <- function(indnr, paramnr, SEx, SEy, xv, yv, chx, chy, zv, chz, SEz, v
 #     count = 1  
 #     for (j in 1:nmodelterms)
 #     {
-#       tmp = polyfitbayes(indnr, xv, yv, chz, M3d[count:count+j-1], zv, vv)
+#       tmp = polyfitbayes(indnr, xv, yv, chz, M3d[count:(count+j-1)], zv, vv)
 #       bestm <- [[1]]
 #       indexbestm <- [[2]]
 #       Bf3d[j] <- bestm
@@ -713,7 +713,7 @@ bayesfac <- function(indnr, paramnr, SEx, SEy, xv, yv, chx, chy, zv, chz, SEz, v
 #     count = 1   
 #     for (j in 1:nmodelterms)
 #     {
-#       tmp = polyfitbayes(indnr, xv, yv, chz, M3e[count:count+j-1], zv, vv)
+#       tmp = polyfitbayes(indnr, xv, yv, chz, M3e[count:(count+j-1)], zv, vv)
 #       bestm <- [[1]]
 #       indexbestm <- [[2]]
 #       Bf3e[j] <- bestm
@@ -727,7 +727,7 @@ bayesfac <- function(indnr, paramnr, SEx, SEy, xv, yv, chx, chy, zv, chz, SEz, v
 #     count = 1   
 #     for (j in 1:nmodelterms)
 #     {
-#       tmp = polyfitbayes(indnr, xv, yv, chz, M3f[count:count+j-1], zv, vv)
+#       tmp = polyfitbayes(indnr, xv, yv, chz, M3f[count:(count+j-1)], zv, vv)
 #       bestm <- [[1]]
 #       indexbestm <- [[2]]
 #       Bf3f[j] <- bestm
@@ -739,7 +739,7 @@ bayesfac <- function(indnr, paramnr, SEx, SEy, xv, yv, chx, chy, zv, chz, SEz, v
     count = 1   
     for (j in 1:nmodelterms)
     {
-      tmp = polyfitbayes(indnr, xv, yv, chv, M4[count:count+j-1], zv, vv)
+      tmp = polyfitbayes(indnr, xv, yv, chv, M4[count:(count+j-1)], zv, vv)
       bestm <- tmp[[1]]
       indexbestm <- tmp[[2]]
       
@@ -756,7 +756,7 @@ bayesfac <- function(indnr, paramnr, SEx, SEy, xv, yv, chx, chy, zv, chz, SEz, v
 #     count = 1    
 #     for (j in 1:nmodelterms)
 #     {
-#       tmp = polyfitbayes(indnr, xv, yv, chv, M4a[count:count+j-1], zv, vv)
+#       tmp = polyfitbayes(indnr, xv, yv, chv, M4a[count:(count+j-1)], zv, vv)
 #       bestm <- [[1]]
 #       indexbestm <- [[2]]
 #       Bf4a[j] <- bestm
@@ -770,7 +770,7 @@ bayesfac <- function(indnr, paramnr, SEx, SEy, xv, yv, chx, chy, zv, chz, SEz, v
 #     count = 1   
 #     for (j in 1:nmodelterms)
 #     {
-#       tmp = polyfitbayes(indnr, xv, yv, chv, M4b[count:count+j-1], zv, vv)
+#       tmp = polyfitbayes(indnr, xv, yv, chv, M4b[count:(count+j-1)], zv, vv)
 #       bestm <- [[1]]
 #       indexbestm <- [[2]]
 #       Bf4b[j] <- bestm
@@ -784,7 +784,7 @@ bayesfac <- function(indnr, paramnr, SEx, SEy, xv, yv, chx, chy, zv, chz, SEz, v
 #     count = 1    
 #     for (j in 1:nmodelterms)
 #     {
-#       tmp = polyfitbayes(indnr, xv, yv, chv, M4c[count:count+j-1], zv, vv)
+#       tmp = polyfitbayes(indnr, xv, yv, chv, M4c[count:(count+j-1)], zv, vv)
 #       bestm <- [[1]]
 #       indexbestm <- [[2]]
 #       Bf4c[j] <- bestm
@@ -798,7 +798,7 @@ bayesfac <- function(indnr, paramnr, SEx, SEy, xv, yv, chx, chy, zv, chz, SEz, v
 #     count = 1    
 #     for (j in 1:nmodelterms)
 #     {
-#       tmp = polyfitbayes(indnr, xv, yv, chv, M4d[count:count+j-1], zv, vv)
+#       tmp = polyfitbayes(indnr, xv, yv, chv, M4d[count:(count+j-1)], zv, vv)
 #       bestm <- [[1]]
 #       indexbestm <- [[2]]
 #       Bf4d[j] <- bestm
@@ -812,7 +812,7 @@ bayesfac <- function(indnr, paramnr, SEx, SEy, xv, yv, chx, chy, zv, chz, SEz, v
 #     count = 1   
 #     for (j in 1:nmodelterms)
 #     {
-#       tmp = polyfitbayes(indnr, xv, yv, chv, M4e[count:count+j-1], zv, vv)
+#       tmp = polyfitbayes(indnr, xv, yv, chv, M4e[count:(count+j-1)], zv, vv)
 #       bestm <- [[1]]
 #       indexbestm <- [[2]]
 #       Bf4e[j] <- bestm
@@ -826,7 +826,7 @@ bayesfac <- function(indnr, paramnr, SEx, SEy, xv, yv, chx, chy, zv, chz, SEz, v
 #     count = 1   
 #     for (j in 1:nmodelterms)
 #     {
-#       tmp = polyfitbayes(indnr, xv, yv, chv, M4f[count:count+j-1], zv, vv)
+#       tmp = polyfitbayes(indnr, xv, yv, chv, M4f[count:(count+j-1)], zv, vv)
 #       bestm <- [[1]]
 #       indexbestm <- [[2]]
 #       Bf4f[j] <- bestm

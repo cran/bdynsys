@@ -15,7 +15,7 @@ polyfitreg <- function(indnr, xv, yv, ch, sel, zv, vv)
     invy[idx2] <- NA
     
     # defining in- and output for the regression
-    input <- cbind(rep(1, length(xv)), invx, invy, xv, yv, invx*invy, invx*yv, invy*xv,
+    input <- cbind(rep(1, length(xv)), invx, invy, xv, yv, invx*invy, xv*invy, yv*invx,
                    xv*yv, xv^2, invx^2, yv^2, invy^2, xv^3, yv^3, invx^3, invy^3)
     inputs <- input[, sel]
     output <- ch  

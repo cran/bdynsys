@@ -19,7 +19,7 @@ phaseportdat <- function(dataset, xv, yv, rangeX, rangeY, f, entidx1, entidx2,
   xmax=1 
   ymin=0 
   ymax=1  
-  rgrid = 21
+  rgrid = 25
 
   y1 <- linspace(xmin, xmax, rgrid)
   y2 <- linspace(ymin, ymax, rgrid)
@@ -48,10 +48,10 @@ phaseportdat <- function(dataset, xv, yv, rangeX, rangeY, f, entidx1, entidx2,
            onefile=FALSE, paper="special", family="ComputerModern")
   
   # setting a plot 
-  plot(rangeX, rangeY, col="white", xlab = "X-Variable", ylab = "Y-Variable")
+  plot(x, y, col="white", xlab = "X-Variable", ylab = "Y-Variable")
   grid(col="white")
   # velocity plot
-  quiver(x, y, u, v, scale=0.5, col = 'gray') 
+  quiver(x, y, u, v, scale=0.5, angle = 10, length = 0.05, lwd = 1.4, col = 'gray') 
   
   # highligh selected entities' tranjectories  
   matplot(xwide[entidx1,], ywide[entidx1,], type='l', ldw=2, col = 'blue', add=TRUE)
@@ -62,14 +62,14 @@ phaseportdat <- function(dataset, xv, yv, rangeX, rangeY, f, entidx1, entidx2,
   matplot(xwide[entidx6,], ywide[entidx6,], type='l', ldw=2, col = 'black', add=TRUE)
   
   # adding markers (circles) for marking initial conditions (default)
-  points(xwide[entidx1,1], ywide[entidx1,1], pch = 20, col = 'blue')
-  points(xwide[entidx2,1], ywide[entidx2,1], pch = 20, col = 'darkgreen')
-  points(xwide[entidx3,1], ywide[entidx3,1], pch = 20, col = 'red')
-  points(xwide[entidx4,1], ywide[entidx4,1], pch = 20, col = 'cyan')
-  points(xwide[entidx5,1], ywide[entidx5,1], pch = 20, col = 'magenta')
-  points(xwide[entidx6,1], ywide[entidx6,1], pch = 20, col = 'black')
+  points(xwide[entidx1,1], ywide[entidx1,1], pch = 20, cex=1.2, col = 'blue')
+  points(xwide[entidx2,1], ywide[entidx2,1], pch = 20, cex=1.2, col = 'darkgreen')
+  points(xwide[entidx3,1], ywide[entidx3,1], pch = 20, cex=1.2, col = 'red')
+  points(xwide[entidx4,1], ywide[entidx4,1], pch = 20, cex=1.2, col = 'cyan')
+  points(xwide[entidx5,1], ywide[entidx5,1], pch = 20, cex=1.2, col = 'magenta')
+  points(xwide[entidx6,1], ywide[entidx6,1], pch = 20, cex=1.2, col = 'black')
   
-  legend("topleft", bg="white", legend=c('Entity1  ', 'Entity2  ', 'Entity3', 'Entity4', 'Entity5', 'Entity6'), 
+  legend("topleft", bg="white", legend=c(entidx1, entidx2, entidx3, entidx4, entidx5, entidx6), 
          lwd = 2, col=c('blue', 'darkgreen', 'red', 'cyan', 'magenta', 'black'))
   
   dev.off()

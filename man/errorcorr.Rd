@@ -1,4 +1,4 @@
-\name{ControllingErrorCorrelations}
+\name{errorcorr}
 
 %\docType{methods}
 
@@ -12,7 +12,7 @@
 \author{
 Viktoria Spaiser: viktoria.spaiser@iffs.se}
 
-\usage{errorcorr(dataset, indnr, x, y, f, xterms, yterms, z, zterms, v, vterms)}
+\usage{errorcorr(dataset, indnr, x, y, f, xterms, yterms, nrterms, z, zterms, v, vterms)}
 	
 \arguments{
 
@@ -40,6 +40,11 @@ Viktoria Spaiser: viktoria.spaiser@iffs.se}
    \item{yterms}{
         a vector that contains the terms from the model dy/dt. 
         }
+   \item{nrterms}{
+        total number of in all equations, e.g. sum of terms in
+        equation for dx/dt and terms in equation for dy/dt, if 
+        the number of variables is two. 
+        }
    \item{z}{
         a reference to variable from the paneldata to be included
         as indicator 3 in the modeling procedure. 
@@ -61,7 +66,7 @@ Viktoria Spaiser: viktoria.spaiser@iffs.se}
 ## dx  = + 0.0012 /x^2 and dy = + 0.0071 x^3
 
 errorcorr(datap, 2, datap$logGDP, datap$EmanzV, 
-f <- function(Y=c()) rbind(0.0012/Y[1]^2, + 0.0071*Y[1]^3), c(11), c(14))
+f <- function(Y=c()) rbind(0.0012/Y[1]^2, + 0.0071*Y[1]^3), c(11), c(14), 2)
 }
 
 \keyword{stats}

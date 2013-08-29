@@ -6,6 +6,9 @@
 # yearnr can be the number of the observations in the data, but in can be also go beyond, to make
 # predictions of trajectories of the specified entities
 
+# there are some problems with quiver(pracma package) plotting in combination with ODE solving, when adding lines, points and legends, that's why the arrangement in the code
+# the user might want to play around with the code to obtain an optimal result for his/her specific case, some help in the comments
+
 phaseportmod <- function(dataset, yearnr, xv, yv, rangeX, rangeY, param, f, entidx1, entidx2, 
                       entidx3, entidx4, entidx5, entidx6) 
 {  
@@ -20,7 +23,7 @@ phaseportmod <- function(dataset, yearnr, xv, yv, rangeX, rangeY, param, f, enti
   xmax=1 
   ymin=0 
   ymax=1  
-  rgrid = 21
+  rgrid = 25
   
   y1 <- linspace(xmin, xmax, rgrid)
   y2 <- linspace(ymin, ymax, rgrid)
@@ -49,15 +52,22 @@ phaseportmod <- function(dataset, yearnr, xv, yv, rangeX, rangeY, param, f, enti
              onefile=FALSE, paper="special", family="ComputerModern")
   
   # setting a plot 
-  plot(rangeX, rangeY, col="white", xlab = "X-Variable", ylab = "Y-Variable")
+  plot(x, y, col="white", xlab = "X-Variable", ylab = "Y-Variable")
   grid(col="white")
-  # velocity plot
-  quiver(x, y, u, v, scale=0.5, col = 'gray') 
   
-  legend("topleft", bg="white", legend=c('Entity1  ', 'Entity2  ', 'Entity3  ', 'Entity4 ', 'Entity5 ', 'Entity6 '), 
-         lwd = 2, col=c('blue', 'darkgreen', 'red', 'cyan', 'magenta', 'black'))
+  legend("topleft", bg="white", legend=c(entidx1, entidx2, ''), 
+         lwd = 2, col=c('blue', 'darkgreen', 'white'))
+
+  # uncomment for call example
+#   legend("topleft", bg="white", legend=c('Entity1  ', ''), 
+#          lwd = 2, col=c('blue', 'white'))
   
-  # defining initial conditions/values, 
+  # from PlOS One example with country names specification
+  #   legend("topleft", bg="white", legend=c('Albania       ', 'Argentina ', 'Australia  ', 'Austria', 'Bangladesh '), 
+  #          lwd = 2, col=c('blue', 'darkgreen', 'red', 'cyan', 'magenta'))
+  
+  # defining initial conditions/value
+  # uncomment for call example
   # example, if the data has missings and different first time of observation
 #   inits1 <- rbind(xwide[entidx1,22], ywide[entidx1,22])
 #   inits2 <- rbind(xwide[entidx2,4], ywide[entidx2,4])
@@ -94,31 +104,47 @@ phaseportmod <- function(dataset, yearnr, xv, yv, rangeX, rangeY, param, f, enti
   sol4 <- ode(y = inits4, times = times, func = f1, parms = param, method = "ode45")
   sol5 <- ode(y = inits5, times = times, func = f1, parms = param, method = "ode45")
   sol6 <- ode(y = inits6, times = times, func = f1, parms = param, method = "ode45")
-  print(sol1)
+  
+  solx <- matrix(c(sol1[,2], sol2[,2], sol3[,2], sol4[,2], sol5[,2],sol6[,2]), nrow=6, ncol=yearnr+1, byrow=TRUE)
+  soly <- matrix(c(sol1[,3], sol2[,3], sol3[,3], sol4[,3], sol5[,3],sol6[,3]), nrow=6, ncol=yearnr+1, byrow=TRUE)
+  
   # highlightning modeled trajectories of selected entities
-  matplot(sol1[,2], sol1[,3], type='l', col = 'blue', add=TRUE)
-  #points(sol1[1,2], sol1[1,3], pch = 20, cex=1, col = 'blue')
-  #lines(sol1[nrow(sol1),2], sol1[nrow(sol1),3], type='l', col = 'blue') 
+  matplot(solx[1,], soly[1,], type='l', ldw=2.2, col = 'blue', add=TRUE)
+  matplot(solx[2,], soly[2,], type='l', ldw=2.2, col = 'darkgreen', add=TRUE)
+  matplot(solx[3,], soly[3,], type='l', ldw=2.2, col = 'red', add=TRUE)
+  matplot(solx[4,], soly[4,], type='l', ldw=2.2, col = 'cyan', add=TRUE) 
+  matplot(solx[5,], soly[5,], type='l', ldw=2.2, col = 'magenta', add=TRUE)
+  matplot(solx[6,], soly[6,], type='l', ldw=2.2, col = 'black', add=TRUE)
   
-  matplot(sol2[,2], sol2[,3], type='l', col = 'darkgreen', add=TRUE)
-  #points(sol2[1,2], sol2[1,3], pch = 20, cex=1, col = 'darkgreen')
-  #lines(sol2[nrow(sol2),2], sol2[nrow(sol2),3], type='l', col = 'darkgreen')
+  points(sol1[1,2], sol1[1,3], pch = 20, cex=1.2, col = 'blue')
+  points(sol2[1,2], sol2[1,3], pch = 20, cex=1.2, col = 'darkgreen')
+  points(sol3[1,2], sol3[1,3], pch = 20, cex=1.2, col = 'red')
+  points(sol4[1,2], sol4[1,3], pch = 20, cex=1.2, col = 'cyan')
+  points(sol5[1,2], sol5[1,3], pch = 20, cex=1.2, col = 'magenta')
+  points(sol6[1,2], sol6[1,3], pch = 20, cex=1.2, col = 'black')
   
-  matplot(sol3[,2], sol3[,3], type='l', col = 'red', add=TRUE)
-  #points(sol3[1,2], sol3[1,3], pch = 20, cex=1, col = 'red')
-  #lines(sol3[nrow(sol3),2], sol3[nrow(sol3),3], type='l', col = 'red')
+  # velocity plot
+  quiver(x, y, u, v, scale=0.5, angle = 20, length = 0.05, lwd = 1.4, col = 'gray') 
   
-  matplot(sol4[,2], sol4[,3], type='l', col = 'cyan', add=TRUE)
-  #points(sol4[1,2], sol4[1,3], pch = 20, cex=1, col = 'cyan')
-  #lines(sol4[nrow(sol4),2], sol4[nrow(sol4),3], type='l', col = 'cyan')
-  
-  matplot(sol5[,2], sol5[,3], type='l', col = 'magenta', add=TRUE)
-  #points(sol5[1,2], sol5[1,3], pch = 20, cex=1, col = 'magenta')
-  #lines(sol5[nrow(sol5),2], sol5[nrow(sol5),3], type='l', col = 'magenta')
-  
-  matplot(sol6[,2], sol6[,3], type='l', col = 'black', add=TRUE)
-  #points(sol6[1,2], sol6[1,3], pch = 20, cex=1, col = 'black')
-  #lines(sol6[nrow(sol6),2], sol6[nrow(sol6),3], type='l', col = 'black')
-  
+  # based on PLOS One example however without countryname specification 
+  legend("topleft", bg="white", legend=c(entidx1, entidx2, entidx3, entidx4, entidx5), 
+         lwd = 2, col=c('blue', 'darkgreen', 'red', 'cyan', 'magenta'))
+  par(new=T)
+  legend("topleft", bg="white", legend=c(entidx1, entidx2, entidx3, entidx4, entidx5, entidx6), 
+         lwd = 2, col=c('blue', 'darkgreen', 'red', 'cyan', 'magenta', 'black'))
+  legend("topleft", bg="white", legend=c(entidx1, entidx2, entidx3, entidx4, entidx5, entidx6), 
+         lwd = 2, col=c('blue', 'darkgreen', 'red', 'cyan', 'magenta', 'black'))
+  legend("topleft", bg="white", legend=c(entidx1, entidx2, entidx3, entidx4, entidx5, entidx6), 
+         lwd = 2, col=c('blue', 'darkgreen', 'red', 'cyan', 'magenta', 'black'))
+
+  # uncomment for specific example in PlOS One, a case-specific optimisation by trying-around
+#   legend("topleft", bg="white", legend=c('Albania        ','Argentina  ', 'Australia   ', 'Austria ', 'Bangladesh ', 'Belgium '), 
+#          lwd = 2, col=c('blue', 'darkgreen', 'red', 'cyan', 'magenta', 'black')) 
+#   par(new=T)
+#   legend("topleft", bg="white", legend=c('Albania        ', 'Argentina  ', 'Australia  ', 'Austria ', 'Bangladesh ', 'Belgium   '), 
+#          lwd = 2, col=c('blue', 'darkgreen', 'red', 'cyan', 'magenta', 'black'))
+#   legend("topleft", bg="white", legend=c('Albania        ', 'Argentina  ', 'Australia  ', 'Austria ', 'Bangladesh ', 'Belgium   '), 
+#          lwd = 2, col=c('blue', 'darkgreen', 'red', 'cyan', 'magenta', 'black'))
+    
   dev.off
 }

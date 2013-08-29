@@ -1,8 +1,8 @@
-\name{BayesianModelFitting(InternalMethod)}
+\name{polyfitbayes}
 
 \alias{polyfitbayes}
 
-\title{Bayesian Model Fitting with Polynomial Terms als Predictors and Changes as Dependent Variable}
+\title{Bayesian Model Fitting with Polynomial Terms als Predictors and Changes as Dependent Variable (Internal Function)}
 
 \description{
 \code{polyfitbayes} is a modeling function internally called in the code \code{bdynsys}{bayesfac}. It computes the values for the independed variables, based on polynomial terms and a coefficient parameter space. The function then performs a Monte Carlo simulation to compute/integrate the log Bayes Factor. It returns internally the log Bayes factors for the best models and the modelindexes of those best models to \code{bdynsys}{bayesfac}.}

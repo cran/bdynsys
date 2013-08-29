@@ -107,11 +107,11 @@ dysymod <- function(indnr, paramnr, var1, var2, chVar1, chVar2, mvar1, mvar2, va
         out_text_x <- array(list(), dim=c(i, j))
         out_text_x[[i, j]] <- cbind('dx', '=')
         
-        for (k in 1:nmodelterms)
+        for (k in 1:i)
           out_text_x[[i, j]] <- cbind(out_text_x[[i, j]], '+', format(B[k], digits = 2), term[[modsel[k]]])    
 
-        print(c('Model #', as.character(j), 'of size', as.character(i), 'is:'), quote=F) 
-        write.table(format(out_text_x[[i, j]], justify="left", width=1), row.names=F, col.names=F, quote=F)
+        print(c('Model #', as.character(j), 'of size', as.character(i), 'is:'), quote=FALSE) 
+        write.table(format(out_text_x[[i, j]], justify="left", width=1), row.names=FALSE, col.names=FALSE, quote=FALSE)
       } 
       print('--------------------------------------------') 
     }  
@@ -145,8 +145,8 @@ dysymod <- function(indnr, paramnr, var1, var2, chVar1, chVar2, mvar1, mvar2, va
         for (k in 1:i)
           out_text_y[[i, j]] <- cbind(out_text_y[[i, j]], '+', format(B[k], digits = 2), term[[modsel[k]]])
         
-        print(c('Model #', as.character(j), 'of size', as.character(i), 'is:'), quote=F)
-        write.table(format(out_text_y[[i, j]], justify="left", width=1), row.names=F, col.names=F, quote=F)
+        print(c('Model #', as.character(j), 'of size', as.character(i), 'is:'), quote=FALSE)
+        write.table(format(out_text_y[[i, j]], justify="left", width=1), row.names=FALSE, col.names=FALSE, quote=FALSE)
       } 
       print('--------------------------------------------')
     } 
@@ -309,11 +309,11 @@ dysymod <- function(indnr, paramnr, var1, var2, chVar1, chVar2, mvar1, mvar2, va
         out_text_x <- array(list(), dim=c(i, j))
         out_text_x[[i, j]] <- cbind('dx', '=')
         
-        for (k in 1:nmodelterms)
+        for (k in 1:i)
           out_text_x[[i, j]] <- cbind(out_text_x[[i, j]], '+', format(B[k], digits = 2), term[[modsel[k]]])    
         
-        print(c('Model #', as.character(j), 'of size', as.character(i), 'is:'), quote=F) 
-        write.table(format(out_text_x[[i, j]], justify="left", width=1), row.names=F, col.names=F, quote=F)
+        print(c('Model #', as.character(j), 'of size', as.character(i), 'is:'), quote=FALSE) 
+        write.table(format(out_text_x[[i, j]], justify="left", width=1), row.names=FALSE, col.names=FALSE, quote=FALSE)
       } 
       print('--------------------------------------------') 
     }  
@@ -347,8 +347,8 @@ dysymod <- function(indnr, paramnr, var1, var2, chVar1, chVar2, mvar1, mvar2, va
         for (k in 1:i)
           out_text_y[[i, j]] <- cbind(out_text_y[[i, j]], '+', format(B[k], digits = 2), term[[modsel[k]]])
         
-        print(c('Model #', as.character(j), 'of size', as.character(i), 'is:'), quote=F)
-        write.table(format(out_text_y[[i, j]], justify="left", width=1), row.names=F, col.names=F, quote=F)
+        print(c('Model #', as.character(j), 'of size', as.character(i), 'is:'), quote=FALSE)
+        write.table(format(out_text_y[[i, j]], justify="left", width=1), row.names=FALSE, col.names=FALSE, quote=FALSE)
       } 
       print('--------------------------------------------')
     } 
@@ -382,8 +382,8 @@ dysymod <- function(indnr, paramnr, var1, var2, chVar1, chVar2, mvar1, mvar2, va
         for (k in 1:i)
           out_text_z[[i, j]] <- cbind(out_text_z[[i, j]], '+', format(B[k], digits = 2), term[[modsel[k]]])
         
-        print(c('Model #', as.character(j), 'of size', as.character(i), 'is:'), quote=F)
-        write.table(format(out_text_z[[i, j]], justify="left", width=1), row.names=F, col.names=F, quote=F)
+        print(c('Model #', as.character(j), 'of size', as.character(i), 'is:'), quote=FALSE)
+        write.table(format(out_text_z[[i, j]], justify="left", width=1), row.names=FALSE, col.names=FALSE, quote=FALSE)
       } 
       print('--------------------------------------------')
     }
@@ -666,11 +666,11 @@ dysymod <- function(indnr, paramnr, var1, var2, chVar1, chVar2, mvar1, mvar2, va
         out_text_x <- array(list(), dim=c(i, j))
         out_text_x[[i, j]] <- cbind('dx', '=')
         
-        for (k in 1:nmodelterms)
+        for (k in 1:i)
           out_text_x[[i, j]] <- cbind(out_text_x[[i, j]], '+', format(B[k], digits = 2), term[[modsel[k]]])    
         
-        print(c('Model #', as.character(j), 'of size', as.character(i), 'is:'), quote=F) 
-        write.table(format(out_text_x[[i, j]], justify="left", width=1), row.names=F, col.names=F, quote=F)
+        print(c('Model #', as.character(j), 'of size', as.character(i), 'is:'), quote=FALSE) 
+        write.table(format(out_text_x[[i, j]], justify="left", width=1), row.names=FALSE, col.names=FALSE, quote=FALSE)
       } 
       print('--------------------------------------------') 
     }  
@@ -704,8 +704,8 @@ dysymod <- function(indnr, paramnr, var1, var2, chVar1, chVar2, mvar1, mvar2, va
         for (k in 1:i)
           out_text_y[[i, j]] <- cbind(out_text_y[[i, j]], '+', format(B[k], digits = 2), term[[modsel[k]]])
         
-        print(c('Model #', as.character(j), 'of size', as.character(i), 'is:'), quote=F)
-        write.table(format(out_text_y[[i, j]], justify="left", width=1), row.names=F, col.names=F, quote=F)
+        print(c('Model #', as.character(j), 'of size', as.character(i), 'is:'), quote=FALSE)
+        write.table(format(out_text_y[[i, j]], justify="left", width=1), row.names=FALSE, col.names=FALSE, quote=FALSE)
       } 
       print('--------------------------------------------')
     } 
@@ -739,8 +739,8 @@ dysymod <- function(indnr, paramnr, var1, var2, chVar1, chVar2, mvar1, mvar2, va
         for (k in 1:i)
           out_text_z[[i, j]] <- cbind(out_text_z[[i, j]], '+', format(B[k], digits = 2), term[[modsel[k]]])
         
-        print(c('Model #', as.character(j), 'of size', as.character(i), 'is:'), quote=F)
-        write.table(format(out_text_z[[i, j]], justify="left", width=1), row.names=F, col.names=F, quote=F)
+        print(c('Model #', as.character(j), 'of size', as.character(i), 'is:'), quote=FALSE)
+        write.table(format(out_text_z[[i, j]], justify="left", width=1), row.names=FALSE, col.names=FALSE, quote=FALSE)
       } 
       print('--------------------------------------------')
     }
@@ -774,8 +774,8 @@ dysymod <- function(indnr, paramnr, var1, var2, chVar1, chVar2, mvar1, mvar2, va
         for (k in 1:i)
           out_text_v[[i, j]] <- cbind(out_text_v[[i, j]], '+', format(B[k], digits = 2), term[[modsel[k]]])
         
-        print(c('Model #', as.character(j), 'of size', as.character(i), 'is:'), quote=F)
-        write.table(format(out_text_v[[i, j]], justify="left", width=1), row.names=F, col.names=F, quote=F)
+        print(c('Model #', as.character(j), 'of size', as.character(i), 'is:'), quote=FALSE)
+        write.table(format(out_text_v[[i, j]], justify="left", width=1), row.names=FALSE, col.names=FALSE, quote=FALSE)
       } 
       print('--------------------------------------------')
     }
