@@ -19,10 +19,12 @@ phaseportmod <- function(dataset, yearnr, xv, yv, rangeX, rangeY, param, f, enti
   #   # boundaries of the system, here under assumption that both variables are scaled 0-1
   #   # the visualisation is optimized for this scaling, in case the user would like to use
   #   # the original scale, he/she needs to adjust the code
-  xmin=0 
-  xmax=1 
-  ymin=0 
-  ymax=1  
+  tmpx <- rangeX
+  tmpy <- rangeY
+  xmin=min(tmpx)
+  xmax=max(tmpx)
+  ymin=min(tmpy)
+  ymax=max(tmpy)
   rgrid = 25
   
   y1 <- linspace(xmin, xmax, rgrid)
@@ -54,17 +56,6 @@ phaseportmod <- function(dataset, yearnr, xv, yv, rangeX, rangeY, param, f, enti
   # setting a plot 
   plot(x, y, col="white", xlab = "X-Variable", ylab = "Y-Variable")
   grid(col="white")
-  
-  legend("topleft", bg="white", legend=c(entidx1, entidx2, ''), 
-         lwd = 2, col=c('blue', 'darkgreen', 'white'))
-
-  # uncomment for call example
-#   legend("topleft", bg="white", legend=c('Entity1  ', ''), 
-#          lwd = 2, col=c('blue', 'white'))
-  
-  # from PlOS One example with country names specification
-  #   legend("topleft", bg="white", legend=c('Albania       ', 'Argentina ', 'Australia  ', 'Austria', 'Bangladesh '), 
-  #          lwd = 2, col=c('blue', 'darkgreen', 'red', 'cyan', 'magenta'))
   
   # defining initial conditions/value
   # uncomment for call example
@@ -127,24 +118,8 @@ phaseportmod <- function(dataset, yearnr, xv, yv, rangeX, rangeY, param, f, enti
   quiver(x, y, u, v, scale=0.5, angle = 20, length = 0.05, lwd = 1.4, col = 'gray') 
   
   # based on PLOS One example however without countryname specification 
-  legend("topleft", bg="white", legend=c(entidx1, entidx2, entidx3, entidx4, entidx5), 
-         lwd = 2, col=c('blue', 'darkgreen', 'red', 'cyan', 'magenta'))
-  par(new=T)
-  legend("topleft", bg="white", legend=c(entidx1, entidx2, entidx3, entidx4, entidx5, entidx6), 
-         lwd = 2, col=c('blue', 'darkgreen', 'red', 'cyan', 'magenta', 'black'))
-  legend("topleft", bg="white", legend=c(entidx1, entidx2, entidx3, entidx4, entidx5, entidx6), 
-         lwd = 2, col=c('blue', 'darkgreen', 'red', 'cyan', 'magenta', 'black'))
-  legend("topleft", bg="white", legend=c(entidx1, entidx2, entidx3, entidx4, entidx5, entidx6), 
-         lwd = 2, col=c('blue', 'darkgreen', 'red', 'cyan', 'magenta', 'black'))
-
-  # uncomment for specific example in PlOS One, a case-specific optimisation by trying-around
-#   legend("topleft", bg="white", legend=c('Albania        ','Argentina  ', 'Australia   ', 'Austria ', 'Bangladesh ', 'Belgium '), 
-#          lwd = 2, col=c('blue', 'darkgreen', 'red', 'cyan', 'magenta', 'black')) 
-#   par(new=T)
-#   legend("topleft", bg="white", legend=c('Albania        ', 'Argentina  ', 'Australia  ', 'Austria ', 'Bangladesh ', 'Belgium   '), 
-#          lwd = 2, col=c('blue', 'darkgreen', 'red', 'cyan', 'magenta', 'black'))
-#   legend("topleft", bg="white", legend=c('Albania        ', 'Argentina  ', 'Australia  ', 'Austria ', 'Bangladesh ', 'Belgium   '), 
-#          lwd = 2, col=c('blue', 'darkgreen', 'red', 'cyan', 'magenta', 'black'))
+  # legend("topleft", bg="white", legend=c(entidx1, entidx2, entidx3, entidx4, entidx5),
+  #       lwd = 2, col=c('blue', 'darkgreen', 'red', 'cyan', 'magenta'))
     
   dev.off
 }

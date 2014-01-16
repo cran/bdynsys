@@ -1,5 +1,5 @@
-ff5218c4dd62ba507ba909f1e5e3c975 *DESCRIPTION
-11eceeb0204e2fe836bbea734e51256b *NAMESPACE
+211d608a3f522ac46758021dae2c9abf *DESCRIPTION
+124e08397fe857fb1f288a63f08c57de *NAMESPACE
 87404c052571f1aa7125f54bcb8b1014 *R/bayesfac.R
 dac72cffd09fe4b664d5041c6d3deb4d *R/bayfacfig.R
 ed5bfd8caa73ffd22d310078e9bf39df *R/bdynsys.R
@@ -7,9 +7,9 @@ ed5bfd8caa73ffd22d310078e9bf39df *R/bdynsys.R
 b68eae72146f21d908ca15472a9b6f67 *R/dysymod.R
 598ff0e5f63521a4eff7a51d51c7f1f5 *R/errorcorr.R
 a00c0d0131dee29fb46990b86cf93f63 *R/findindexM.R
-58a8ae61c6e684655239151cc7a0b319 *R/phaseportdat.R
-fbe5346927353bcc4598b610304cc7e6 *R/phaseportmod.R
-de109e1799a6d4802eefa129aa0873c3 *R/plot_data.R
+4054d109b6e912b1987579fd3a1e772b *R/phaseportdat.R
+81d945f840e9f20c3e9859197ac4a935 *R/phaseportmod.R
+54a06425aeb38379173f5f938fe33af7 *R/plot_data.R
 7a2b7edd1303f5a54cfeeea64d383f7b *R/polyfitbayes.R
 fc08385100f0b03dc64f818883feafa2 *R/polyfitreg.R
 6dde0747d8b51208deb6b70a60852617 *R/preprocess_data.R
@@ -17,7 +17,7 @@ fc08385100f0b03dc64f818883feafa2 *R/polyfitreg.R
 ad326a67537d5a86960c0de03dfdb0ae *data/datap.RData
 682734427d36deac08493609b64c40e3 *man/bayesfac.Rd
 da3ef9ec2e55f603f8d6712cc083f331 *man/bayfacfig.Rd
-8ecb410a2d12dfd6154055e0298498b8 *man/bdynsys.Rd
+a35c0661c8cd6a21f3acfb4dd8647d4e *man/bdynsys.Rd
 f70196d2a3c1ae2e58fc32bdbbb69c39 *man/bestfitmod.Rd
 a6aad8f71c389382e20f8804cb9b6c5f *man/datap.Rd
 451223811f93e326b5c0d18ef762f78f *man/dysymod.Rd

@@ -15,10 +15,12 @@ phaseportdat <- function(dataset, xv, yv, rangeX, rangeY, f, entidx1, entidx2,
 #   # boundaries of the system, here under assumption that both variables are scaled 0-1
 #   # the visualisation is optimized for this scaling, in case the user would like to use
 #   # the original scale, he/she needs to adjust the code
-  xmin=0 
-  xmax=1 
-  ymin=0 
-  ymax=1  
+  tmpx <- rangeX
+  tmpy <- rangeY
+  xmin=min(tmpx)
+  xmax=max(tmpx)
+  ymin=min(tmpy)
+  ymax=max(tmpy)
   rgrid = 25
 
   y1 <- linspace(xmin, xmax, rgrid)

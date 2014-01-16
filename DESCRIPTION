@@ -1,17 +1,17 @@
 Package: bdynsys
 Type: Package
 Title: Bayesian Dynamical System Model
-Version: 1.1
-Date: 2013-08-29
+Version: 1.2
+Date: 2014-01-16
 Author: Shyam Ranganathan, Viktoria Spaiser, Richard P. Mann, David J.T. Sumpter
 Maintainer: Viktoria Spaiser <viktoria.spaiser@iffs.se>
 Depends: R (>= 2.10), stats, graphics, grDevices
-Imports: bdsmatrix, plm, Formula, MASS, nlme, zoo, sandwich, Hmisc,
-        deSolve, pracma, caTools, matrixStats
+Imports: plm, Formula, MASS, Hmisc, deSolve, pracma, caTools,
+        matrixStats
 LazyData: yes
 Description: The package bdynsys for panel/longitudinal data combines methods to model 
              changes in up to four indicators over times as a function of the indicators
-             itself and up to three predictors using ordinary differential equations 
+             themselves and up to three predictors using ordinary differential equations 
              (ODEs) with polynomial terms that allow to model complex and nonlinear 
              effects. A Bayesian model selection approach is implemented. The package 
              provides also visualisation tools to plot phase portraits of the dynamic 
@@ -22,6 +22,6 @@ Description: The package bdynsys for panel/longitudinal data combines methods to
              indicators.   
 License: GNU General Public License (>= 2)
 NeedsCompilation: no
-Packaged: 2013-08-29 21:47:54 UTC; viktoriasp
+Packaged: 2014-01-16 12:48:58 UTC; viktoriasp
 Repository: CRAN
-Date/Publication: 2013-08-30 01:25:02
+Date/Publication: 2014-01-16 15:39:10

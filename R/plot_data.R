@@ -10,6 +10,13 @@ plot_data <- function(dataset, xvar, yvar, rangeX, rangeY, entidx1, entidx2, ent
   xwide <- procdata$xwide
   ywide <- procdata$ywide
   
+  tmpx <- rangeX
+  tmpy <- rangeY
+  xmin=min(tmpx)
+  xmax=max(tmpx)
+  ymin=min(tmpy)
+  ymax=max(tmpy)
+  
   # phase portrait with highlighted data trajectories
   dev.set(1)
   postscript("dataplot.eps", horizontal=FALSE, width=5, height=5,
@@ -17,7 +24,7 @@ plot_data <- function(dataset, xvar, yvar, rangeX, rangeY, entidx1, entidx2, ent
   
  # title(xlab=strcat(xvar, "(x)", ylab=strcat(yvar, "(y)"), pointsize=18))
   plot(xwide[1:1, 1:20], ywide[1:1, 1:20], type='l', lwd=1.5, col='gray', xlab = "X-Variable", ylab = "Y-Variable", 
-       xlim=c(0, 1), ylim=c(0, 1))
+       xlim=c(xmin, xmax), ylim=c(ymin, ymax))
   #points(xwide[1:20, 10], ywide[1:20, 10], pch = 20, col='darkgray')
   
   # plotting 15 random cases as trajectories and highligh selected entities' tranjectories  

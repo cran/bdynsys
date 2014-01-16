@@ -55,8 +55,7 @@ systems modeling.}
 }
 
 \examples{
-## Bayesian Dynamic System Modeling with two variables and three modelparameters
-## dx  = + 0.0012 /x^2 and dy = + 0.0071 x^3
+## Bayesian Dynamic System Modeling with two variables and one modelparameter
 
 bdynsys(datap, 2, 1, datap$logGDP, datap$EmanzV)
 }
