@@ -8,7 +8,7 @@
 \code{preprocess_data} is a core code in the bdynsys package to prepare the data for the bayesian dynamic system modeling. It is internally called in the main code \code{bdynsys}. It creates wide format matrixes for the indicators based on time and entity-id. It also reshapes the indicators into single columns ordered by time, computes the changes in the indicators at each timestep, reshapes them also into single colums ordered by time and stores them in variables. It furthermore removes missing values and scales the variables with their means. It returnes the processed variables to \code{bdynsys} and that way makes them availabe for usage in \code{bdynsys}{dysymod} and \code{bdynsys}{bayesfac}.It requires the package \code{plm} and \code{matrixStats}.}
 
 \author{
-Viktoria Spaiser: viktoria.spaiser@iffs.se}
+Viktoria Spaiser: viktoria.sp@web.de}
   
 %\usage{\method{bdynsys}{preprocess_data}(indicatornumber, x, y, z, v)}
 %  

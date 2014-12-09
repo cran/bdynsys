@@ -7,7 +7,7 @@
 \description{
 \code{polyfitbayes} is a modeling function internally called in the code \code{bdynsys}{bayesfac}. It computes the values for the independed variables, based on polynomial terms and a coefficient parameter space. The function then performs a Monte Carlo simulation to compute/integrate the log Bayes Factor. It returns internally the log Bayes factors for the best models and the modelindexes of those best models to \code{bdynsys}{bayesfac}.}
 
-\author{Viktoria Spaiser: viktoria.spaiser@iffs.se}
+\author{Viktoria Spaiser: viktoria.sp@web.de}
   
 %\usage{\method{bdynsys}{bayesfac}{polyfitbayes}(indicatornumber, parameternumber, x, y, ch, selected_terms, z, v)}
 %

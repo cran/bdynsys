@@ -7,7 +7,7 @@
 \description{
 \code{selectterms} selects/indexes terms which are part of the models to be fitted in the Bayesian fitting procedure. The function is internally called in the code \code{bdynsys}{bayesfac}. The model selections is based on the Sum of Square Errors which were computed in the previous model fitting step in \code{bdynsys}{dysymod}. It returns internally the indexes of the best models polynomial terms to \code{bdynsys}{bayesfac}.}
 
-\author{Viktoria Spaiser: viktoria.spaiser@iffs.se}
+\author{Viktoria Spaiser: viktoria.sp@web.de}
   
 %\usage{\method{bdynsys}{bayesfac}{selectterms}(indicatornumber, parameternumber, SSEx, SSEy, SSEz, SSEv)}
 %

@@ -10,14 +10,14 @@
 \code{errorcorr} is an additional function in the bdynsys package. It calls functions \code{preprocess_data}. It computes the errors in the models (differential equations) and the covariances of the errors. It then uses the covarinaces to re-estimate the Betas of the models. The covarinace matrix is printed and the re-estimated Betas saved in a file. It requires the package \code{MASS}}
 
 \author{
-Viktoria Spaiser: viktoria.spaiser@iffs.se}
+Viktoria Spaiser: viktoria.sp@web.de}
 
 \usage{errorcorr(dataset, indnr, x, y, f, xterms, yterms, nrterms, z, zterms, v, vterms)}
 	
 \arguments{
 
     \item{dataset}{
-        a \code{plm}, a\code{pdata.frame} panel data frame.
+        a \code{plm} \code{pdata.frame} panel data frame.
         }
     \item{indnr}{
         an integer number indicating number of indicators,
@@ -63,7 +63,7 @@ Viktoria Spaiser: viktoria.spaiser@iffs.se}
 
 \examples{
 ## Controlling Error Correlations with two indicators and with the following two models:
-## dx  = + 0.0012 /x^2 and dy = + 0.0071 x^3
+## dx/dt  = + 0.0012 /x^2 and dy/dt = + 0.0071 x^3
 
 errorcorr(datap, 2, datap$logGDP, datap$EmanzV, 
 f <- function(Y=c()) rbind(0.0012/Y[1]^2, + 0.0071*Y[1]^3), c(11), c(14), 2)

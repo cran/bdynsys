@@ -13,12 +13,12 @@ name of the main function in the \code{bdynsys} package, that performs the bayes
 systems modeling.}
 
 \references{
-       Ranganathan, S./Spaiser, V./Sumpter, D.J.T. (2013) 
-       \emph{A Bayesian approach to modeling dynamical systems in the social sciences}.
-       SIMULTECH 2013 Proceedings, Reykjavik.
+       Ranganathan, S./Spaiser, V./Mann, R.P./Sumpter, D.J.T. (2014) 
+       \emph{Bayesian Dynamical Systems Modelling in the Social Sciences}.
+       PLoS ONE, 9(1):e86468.
      }
 
-\author{Viktoria Spaiser: viktoria.spaiser@iffs.se}
+\author{Viktoria Spaiser: viktoria.sp@web.de}
 
 \usage{bdynsys(dataset, indnr, paramnr, x, y, z, v)
 }
@@ -26,7 +26,7 @@ systems modeling.}
 \arguments{
 
     \item{dataset}{
-        a \code{plm}, a\code{pdata.frame} panel data frame.
+        a \code{plm} \code{pdata.frame} panel data frame.
         }
     \item{indnr}{
         an integer number indicating number of indicators,

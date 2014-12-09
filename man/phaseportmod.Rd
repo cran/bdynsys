@@ -9,7 +9,7 @@
 \description{
 \code{phaseportmod} creates a phase portrait (velocity plot, vectorfield) based on the two differential equations that were considered to be the overall best models for indicator 1 and indicator 2. The user may specify entities for which he/she wants to obtain the predicted (modeled) trajectories over the phase portrait. The user may extend the period of time for the modeling to get future-predicted trjectories of the entities based on the models. It calls the function \code{preprocess_data}. It requires the packages \code{plm}, \code{pracma}, \code{deSolve} and \code{graphics}. The function produces graphs by some default settings. For specific requirements the user might want to modify the code according to his/her needs.}
 
-\author{Viktoria Spaiser: viktoria.spaiser@iffs.se}
+\author{Viktoria Spaiser: viktoria.sp@web.de}
   
 \usage{phaseportmod(dataset, yearnr, xv, yv, rangeX, rangeY, param, f, entidx1, 
 entidx2, entidx3, entidx4, entidx5, entidx6)}
@@ -17,7 +17,7 @@ entidx2, entidx3, entidx4, entidx5, entidx6)}
 \arguments{
 
     \item{dataset}{
-        a \code{plm}, a\code{pdata.frame} panel data frame.
+        a \code{plm} \code{pdata.frame} panel data frame.
         }
     \item{yearnr}{
         number of years for which the user wants to produce the phase portrait
@@ -64,8 +64,8 @@ entidx2, entidx3, entidx4, entidx5, entidx6)}
 }
 
 \examples{
-## Phase Portrait with Modeles Trajectories over 30 years with the following two models:
-## dx/dt  = 0.014 + 0.0064*x*y - 0.02*x^2 and dy/dt = 0.106*x^3 - 0.062*y/x
+## Phase Portrait with Model Trajectories over 30 years with the following two models:
+## dx/dt  = 0.014 + 0.0064*x*y - 0.02*x and dy/dt = 0.106*x^3 - 0.062*y/x
 
 phaseportmod(datap, 30, datap$logGDP, datap$DemocrH, seq(0, 1, by = 0.01), seq(0, 1, by = 0.01),
 param <- c(0.014, -0.0064, -0.02, 0.106, -0.062), f <- function(t,Y=c()) 

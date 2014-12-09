@@ -7,7 +7,7 @@
 \description{
 \code{bayfacfig} plot the Bayes Factors to visualy display the selected and the overall best model. It requires the packages \code{Hmisc} and \code{graphics}.}
 
-\author{Viktoria Spaiser: viktoria.spaiser@iffs.se}
+\author{Viktoria Spaiser: viktoria.sp@web.de}
   
 \usage{bayfacfig(indnr, modelnr, BF, markmod)}
 

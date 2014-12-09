@@ -8,7 +8,7 @@
 \description{
 \code{polyfitreg} is a modeling function internally called in the code \code{bdynsys}{dysymod} as well as in \code{bdynsys}{dysymod}{bestfitmod}. It computes the values for the independed variables, based on polynomial terms and computes all possible regression models with all possible combinations of these independ variables (all possible combinations of polynimal terms) and the changes in the dependent variables which are to be predicted. The function estimates the Betas, computes the Sum Square of Error of all possible models as well as their Log Likelihood and R-squares. It returns internally the Sum Square of Error matrices to \code{bdynsys}{dysymod}{bestfit} and Betas to \code{bdynsys}{dysymod}.Log Likelihood and R-square are printed.}
 
-\author{Viktoria Spaiser: viktoria.spaiser@iffs.se}
+\author{Viktoria Spaiser: viktoria.sp@web.de}
   
 %\usage{\method{bdynsys}{dysymod}{polyfitreg}(indicatornumber, parameternumber, x, y, ch, selected_terms, z, v)}
 %  

@@ -7,7 +7,7 @@
 \description{
 \code{dysymod} is the core code of the dynamic system modeling in the bdynsys package. It is internally called in the main code \code{bdynsys}. It calls the functions \code{polyfitreg} and \code{bestfitmod}. It defines the polynomial terms, that are used to build the models and creates all possible model combinations and fits them. The best three models for each number of modelparameters are then selected. It prints the three selected models for each number of modelparameters and their Log Likelihood and R-squares. It requires the package \code{caTools}.}
 
-\author{Viktoria Spaiser: viktoria.spaiser@iffs.se}
+\author{Viktoria Spaiser: viktoria.sp@web.de}
  
 %\usage{\method{bdynsys}{dysymod}(indicatornumber, parameternumber, x, y, chx, chy, mx, my, z, chz, mz, v, chv, mv)}
 %  

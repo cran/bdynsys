@@ -9,7 +9,7 @@
 \description{
 \code{plot_data} plots data form indicator 1 and indicator 2 in phase plane. The user may specify entities for which he/she wants to plot the data trajectories over the plotted data. It calls the function \code{preprocess_data}. It requires the packages \code{plm} and \code{graphics}.}
 
-\author{Viktoria Spaiser: viktoria.spaiser@iffs.se}
+\author{Viktoria Spaiser: viktoria.sp@web.de}
   
 \usage{plot_data(dataset, xvar, yvar, rangeX, rangeY, entidx1, entidx2, entidx3, 
 entidx4, entidx5, entidx6)}
@@ -17,7 +17,7 @@ entidx4, entidx5, entidx6)}
 \arguments{
 
     \item{dataset}{
-        a \code{plm}, a\code{pdata.frame} panel data frame.
+        a \code{plm} \code{pdata.frame} panel data frame.
         }
     \item{xvar}{
         a reference to variable from the paneldata to be included

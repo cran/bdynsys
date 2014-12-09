@@ -8,7 +8,7 @@
 \description{
 \code{bestfitmod} is a model fitting function internally called in the code \code{bdynsys}{dysymod}. It calls the functions \code{polyfitreg}. It creates the testing and training datasubsets for model fitting, passes them on to \code{polyfitreg} and receives back the Sum Square of Errors which are then stored in matrix for each indicator. It returns internally the Sum Square of Error matrices to \code{bdynsys}{dysymod}. It requires the package \code{caTools}.}
 
-\author{Viktoria Spaiser: viktoria.spaiser@iffs.se}
+\author{Viktoria Spaiser: viktoria.sp@web.de}
   
 %\usage{\method{bdynsys}{dysymod}{bestfitmod}(indicatornumber, parameternumber, x, y, ch, z, v)}
   
